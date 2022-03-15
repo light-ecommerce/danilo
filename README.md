@@ -1,20 +1,20 @@
 
-## Projeto
+# Projeto
 
 Realizar cadastro de cliente nas seguintes condições:
 
-# Utilizar Codeigniter
+## Utilizar Codeigniter
 
-# O sistema deverá ter 3 telas:
+## O sistema deverá ter 3 telas:
 - Listagem com opções: 
  > editar, excluir(com confirmação de exclusão) >> em cada item da listagem
  > novo cadastro >> no topo da listagem
 - Cadastro
 - Alteração
 
-## Os dados devem seguir as seguintes regras de validações
+# Os dados devem seguir as seguintes regras de validações
 
-# dados pessoais
+## dados pessoais
 - nome 
  > max 200 caracteres
 
@@ -39,7 +39,7 @@ Realizar cadastro de cliente nas seguintes condições:
 - observaçoes
  > campo texto livre
 
-# endereço
+## endereço
 - cep
  > 8 digitos
 
@@ -62,5 +62,5 @@ Realizar cadastro de cliente nas seguintes condições:
 - ibge
  > Integer
 
-# Implementar autocomplete ao digitar cep com:
+## Implementar autocomplete ao digitar cep com:
 https://viacep.com.br/
