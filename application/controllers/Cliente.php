@@ -20,7 +20,6 @@ class Cliente extends CI_Controller {
     }
 
     public function cadastrar() {
-
         $resultados = FALSE;
 
        if($this->input->post('nome')){

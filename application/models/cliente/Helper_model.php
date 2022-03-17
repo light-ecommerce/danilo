@@ -68,4 +68,9 @@ class Helper_model extends CI_Model {
         return $mascara;
     }
 
+    public function viaCEP($cep) {
+        
+        return $cep;
+    }
+
 }
