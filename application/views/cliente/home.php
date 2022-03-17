@@ -43,7 +43,10 @@
                 <strong> Sexo: </strong> Masculino
             <?php endif; ?>
         </p>
-        <p><strong> Data Cadastro: </strong> <?php echo $cliente['data_cadastro'];?></p>
+        <p><strong> Data Cadastro: </strong> 
+        <?php 
+                echo date('d/m/Y H:i:s', strtotime($cliente['data_cadastro'])); 
+        ?></p>
         <p><strong> Telefone: </strong> <?php echo $cliente['telefone'];?></p>
         <p><strong> Email: </strong> <?php echo $cliente['email'];?></p>
         <p><strong> Observações: </strong> <?php echo $cliente['observacoes'];?></p>
