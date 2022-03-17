@@ -18,7 +18,7 @@
             <?php if($cliente['tipo_pessoa'] == 0) : ?>
                 <strong> CPF: </strong> <?php echo $cliente['cpf_cnpj'];?>
             <?php else: ?>
-                <strong> CNPJ: </strong> <?echo $cliente['cpf_cnpj'];?>
+                <strong> CNPJ: </strong> <?php echo $cliente['cpf_cnpj'];?>
             <?php endif; ?>
         </p>
         <p>

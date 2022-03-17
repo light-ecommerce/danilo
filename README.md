@@ -35,7 +35,7 @@ https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/refs/tags/3.1.13
 - data valida
 
 >telefone
-- gravar com marcara
+- gravar com mascara
 
 >email
 - email válido 

@@ -23,13 +23,13 @@ class Migration_cria_tabela_clientes extends CI_Migration {
                 'null' => FALSE
             ),
             'cpf_cnpj' => array(
-                'type' => 'INT',
-                'constraint' => '14',
+                'type' => 'VARCHAR',
+                'constraint' => '18',
                 'null' => FALSE
             ),
             'rg_ie' => array(
                 'type' => 'INT',
-                'constraint' => '9',
+                'constraint' => '15',
                 'null' => TRUE
             ),
             'sexo' => array(
@@ -43,8 +43,8 @@ class Migration_cria_tabela_clientes extends CI_Migration {
                 'default' => NULL
             ),
             'telefone' => array(
-                'type' => 'INT',
-                'constraint' => '11',
+                'type' => 'VARCHAR',
+                'constraint' => '14',
                 'null' => FALSE
             ),
             'email' => array(
