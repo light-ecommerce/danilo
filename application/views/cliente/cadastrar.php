@@ -71,7 +71,7 @@
         <label for="logradouro">Endereço: </label>
         <input type="text" id="logradouro" name="logradouro" maxlength="200" required>
         <label for="numero">Número: </label>
-        <input type="number" id="numero" name="numero" required>
+        <input type="text" id="numero" name="numero" maxlength="10" required>
         <label for="complemento">Complemento: </label>
         <input type="text" id="complemento" name="complemento">
         <label for="bairro">Bairro: </label>

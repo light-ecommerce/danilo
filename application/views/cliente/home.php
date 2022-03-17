@@ -22,6 +22,13 @@
             <?php endif; ?>
         </p>
         <p>
+            <?php if($cliente['tipo_pessoa'] == 0) : ?>
+                <strong> RG: </strong> <?php echo $cliente['rg_ie'];?>
+            <?php else: ?>
+                <strong> IE: </strong> <?php echo $cliente['rg_ie'];?>
+            <?php endif; ?>
+        </p>
+        <p>
             <?php if($cliente['sexo'] == 0) : ?>
                 <strong> Sexo: </strong> Feminino 
             <?php else: ?>

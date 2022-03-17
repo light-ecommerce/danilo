@@ -28,7 +28,7 @@ class Migration_cria_tabela_clientes extends CI_Migration {
                 'null' => FALSE
             ),
             'rg_ie' => array(
-                'type' => 'INT',
+                'type' => 'VARCHAR',
                 'constraint' => '15',
                 'null' => TRUE
             ),
