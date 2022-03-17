@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'nfecustodia.com.br',
+	'hostname' => 'http://nfecustodia.com.br',
 	'username' => 'nfecusto_teste',
 	'password' => 'o@]9gP0lwc3K',
 	'database' => 'nfecusto_teste',
