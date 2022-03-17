@@ -10,6 +10,14 @@
     <h1><?php echo $titulo; ?></h1>
     <hr>
     <button><a href="<?php echo base_url('cliente/cadastrar');?>">Cadastrar Cliente</a></button>
+    <p>
+        <?php 
+            if(isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
+        ?>
+    </p>
     <hr>
     <?php foreach($clientes as $cliente): ?>
         <p><strong> ID: </strong> <?php echo $cliente['id'];?></p>
@@ -45,8 +53,10 @@
         <p><strong> Bairro: </strong> <?php echo $cliente['bairro'];?></p>
         <p><strong> Estado: </strong> <?php echo $cliente['uf'];?></p>
         <p><strong> IBGE: </strong> <?php echo $cliente['ibge'];?></p>
-        <button><a href="#">Alterar</a></button>
-        <button><a href="#">Excluir</a></button>
+        <button><a href="<?php echo base_url('cliente/alterar/' . $cliente['id']);?>">Alterar</a></button>
+        <button><a onclick="javascript: 
+            if (confirm('Você realmente deseja excluir este cliente?'))
+            location.href='<?php echo base_url('cliente/excluir/' . $cliente['id']);?>'">Excluir</a></button>
         <hr>
     <?php endforeach; ?>
 </body>

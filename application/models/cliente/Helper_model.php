@@ -57,8 +57,7 @@ class Helper_model extends CI_Model {
         } elseif($numeroDigitos == 12) {
             $mascara = "###.###.###.###";
         } else {
-            return "Numero de Caracteres inválidos";
-            die();
+            $mascara = "######";
         }
         
         for($i = 0; $i < $numeroDigitos; $i++) {
@@ -68,9 +67,8 @@ class Helper_model extends CI_Model {
         return $mascara;
     }
 
-    public function viaCEP($cep) {
-        
-        return $cep;
+    public function removeCaracteres($numero) {
+        return $numero = str_replace(array(".","/","-","(",")"),"", $numero);
     }
 
 }

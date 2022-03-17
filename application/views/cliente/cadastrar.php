@@ -41,46 +41,84 @@
     <hr>
     <form action="#" method="POST">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" maxlength="200" required>
+        <input type="text" id="nome" name="nome" maxlength="200" required 
+        value="<?php echo $nome = (isset($clientes['nome']) ? $clientes['nome'] : "") ;?>">
         <div>
             <p>Tipo de Pessoa: </p>
-            <input type="radio" id="pessoa_fisica" name="tipo_pessoa" value="0" checked>
+            <input type="radio" id="pessoa_fisica" name="tipo_pessoa" value="0" 
+            <?php  
+                if(isset($clientes['nome'])) {
+                    echo $checked = ($clientes['tipo_pessoa'] == 0) ? 'checked' : "";
+                } else {
+                    echo 'checked';
+                }
+            ?>>
             <label for="pessoa_fisica">Pessoa Física</label>
-            <input type="radio" id="pessoa_juridica" name="tipo_pessoa" value="1">
+            <input type="radio" id="pessoa_juridica" name="tipo_pessoa" value="1"
+            <?php  
+                if(isset($clientes['nome'])) {
+                    echo $checked = ($clientes['tipo_pessoa'] == 1) ? 'checked' : "";
+                } 
+            ?>>
             <label for="pessoa_juridica">Pessoa Juridica</label>
         </div>
         <label for="cpf_cnpj">CPF/CNPJ: </label>
-        <input type="text" id="cpf_cnpj" name="cpf_cnpj" maxlength="14" minlength="11" required>
+        <input type="text" id="cpf_cnpj" name="cpf_cnpj" maxlength="14" minlength="11" required 
+        value="<?php echo $cpf_cnpj = (isset($clientes['cpf_cnpj']) ? $clientes['cpf_cnpj'] : "") ;?>">
         <label for="rg_ie">RG/IE: </label>
-        <input type="text" id="rg_ie" name="rg_ie" maxlength="12" minlength="9" required>
+        <input type="text" id="rg_ie" name="rg_ie" maxlength="12" minlength="6" required
+        value="<?php echo $rg_ie = (isset($clientes['rg_ie']) ? $clientes['rg_ie'] : "") ;?>">
         <div>
             <p>Sexo: </p>
-            <input type="radio" id="sexo_feminino" name="sexo" value="0" checked>
+            <input type="radio" id="sexo_feminino" name="sexo" value="0" 
+            <?php  
+                if(isset($clientes['nome'])) {
+                    echo $checked = ($clientes['sexo'] == 0) ? 'checked' : "";
+                } else {
+                    echo 'checked';
+                }
+            ?>>
             <label for="sexo_feminino">Feminino</label>
-            <input type="radio" id="sexo_masculino" name="sexo" value="1">
+            <input type="radio" id="sexo_masculino" name="sexo" value="1"
+            <?php  
+                if(isset($clientes['nome'])) {
+                    echo $checked = ($clientes['sexo'] == 1) ? 'checked' : "";
+                }
+            ?>>
             <label for="sexo_masculino">Masculino</label>
         </div>
         <label for="telefone">Telefone: </label>
-        <input type="tel" id="telefone" name="telefone" maxlength="11" minlength="10" required>
+        <input type="tel" id="telefone" name="telefone" maxlength="11" minlength="10" required
+        value="<?php echo $telefone = (isset($clientes['telefone']) ? $clientes['telefone'] : "") ;?>">
         <label for="email">Email: </label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required 
+        value="<?php echo $email = (isset($clientes['email']) ? $clientes['email'] : "") ;?>">
         <label for="observacoes">Observações: </label>
-        <textarea id="observacoes" name="observacoes" cols="30" rows="5"></textarea>
+        <textarea id="observacoes" name="observacoes" cols="30" rows="5"><?php 
+            if(isset($clientes['observacoes'])) { echo trim($clientes['observacoes']); } 
+        ?> </textarea>
         <label for="cep">CEP: </label>
-        <input type="text" id="cep" name="cep" maxlength="8" required onblur="pesquisarCep(this.value);">
+        <input type="text" id="cep" name="cep" maxlength="8" required onblur="pesquisarCep(this.value);"
+        value="<?php echo $cep = (isset($clientes['cep']) ? $clientes['cep'] : "") ;?>">
         <label for="logradouro">Endereço: </label>
-        <input type="text" id="logradouro" name="logradouro" maxlength="200" required>
+        <input type="text" id="logradouro" name="logradouro" maxlength="200" required
+        value="<?php echo $logradouro = (isset($clientes['logradouro']) ? $clientes['logradouro'] : "") ;?>">
         <label for="numero">Número: </label>
-        <input type="text" id="numero" name="numero" maxlength="10" required>
+        <input type="text" id="numero" name="numero" maxlength="10" required
+        value="<?php echo $numero = (isset($clientes['numero']) ? $clientes['numero'] : "") ;?>">
         <label for="complemento">Complemento: </label>
-        <input type="text" id="complemento" name="complemento">
+        <input type="text" id="complemento" name="complemento"
+        value="<?php echo $complemento = (isset($clientes['complemento']) ? $clientes['complemento'] : "") ;?>">
         <label for="bairro">Bairro: </label>
-        <input type="text" id="bairro" name="bairro" required>
+        <input type="text" id="bairro" name="bairro" required
+        value="<?php echo $bairro = (isset($clientes['bairro']) ? $clientes['bairro'] : "") ;?>">
         <label for="uf">Estado: </label>
-        <input type="text" id="uf" name="uf" required>
+        <input type="text" id="uf" name="uf" required
+        value="<?php echo $uf = (isset($clientes['uf']) ? $clientes['uf'] : "") ;?>">
         <label for="ibge">IBGE: </label>
-        <input type="number" id="ibge" name="ibge" required>
-        <input type="submit" id="btn_submit" name="btn_submit" value="Cadastrar Cliente">
+        <input type="number" id="ibge" name="ibge" required 
+        value="<?php echo $ibge = (isset($clientes['ibge']) ? $clientes['ibge'] : "") ;?>">
+        <input type="submit" id="btn_submit" name="btn_submit" value="<?php echo $botao ?>">
     </form>
 
     <script>
