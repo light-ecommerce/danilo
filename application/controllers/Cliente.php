@@ -25,13 +25,17 @@ class Cliente extends CI_Controller
 
     public function cadastrar()
     {
-        $resultados = FALSE;
+        $msg = "";
+        $dados = FALSE;
 
-        if ($this->input->post('nome')) {
+        if ($this->input->post('btn_submit')) {
             $resultados = $this->input->post(array(
                 'nome',
                 'tipo_pessoa',
+                'cpf_cnpj',
+                'rg_ie',
                 'sexo',
+                'telefone',
                 'email',
                 'observacoes',
                 'cep',
@@ -43,20 +47,22 @@ class Cliente extends CI_Controller
                 'ibge'
             ));
 
-            $cpf_cnpj = $this->input->post('cpf_cnpj');
-            $rg_ie = $this->input->post('rg_ie');
-            $telefone = $this->input->post('telefone');
+            $dados = $this->helper_model->validaFormulario($resultados);
+            $dados_clientes = $dados['dados_clientes'];
 
-            $resultados['cpf_cnpj'] = $this->helper_model->mascaraCpfCnpj($cpf_cnpj);
-            $resultados['rg_ie'] = strtoupper($this->helper_model->mascaraRgIe($rg_ie));
-            $resultados['telefone'] = $this->helper_model->mascaraTelefone($telefone);
-            $resultados['data_cadastro'] = $this->helper_model->retornaData();
+            if(isset($dados_clientes)) {
+                if(count($dados_clientes) > 15) {
+                    $msg = $this->cliente_model->insert($dados_clientes);
+                    $pagina = base_url('cliente/home');
+                    header("Location:" . $pagina);
+                    $_SESSION['msg_cadastro'] = "Cliente Cadastrado com sucesso !";
+                } 
+            }
         }
-
-        $msg = $this->cliente_model->insert($resultados);
 
         $data = [
             'titulo' => 'Cadastro de Clientes',
+            'clientes' => $dados['cliente'],
             'msg'    => $msg,
             'botao' => 'Cadastrar Cliente'
         ];
@@ -66,15 +72,22 @@ class Cliente extends CI_Controller
 
     public function alterar($id)
     {
-
         $resultados = FALSE;
         $msg = "";
 
-        if ($this->input->post('nome')) {
+        $cliente = $this->cliente_model->select($id);
+        $cliente['cpf_cnpj'] = $this->helper_model->removeCaracteres($cliente['cpf_cnpj']);
+        $cliente['rg_ie'] = $this->helper_model->removeCaracteres($cliente['rg_ie']);
+        $cliente['telefone'] = $this->helper_model->removeCaracteres($cliente['telefone']);
+
+        if ($this->input->post('btn_submit')) {
             $resultados = $this->input->post(array(
                 'nome',
                 'tipo_pessoa',
+                'cpf_cnpj',
+                'rg_ie',
                 'sexo',
+                'telefone',
                 'email',
                 'observacoes',
                 'cep',
@@ -86,23 +99,19 @@ class Cliente extends CI_Controller
                 'ibge'
             ));
 
-            $cpf_cnpj = $this->input->post('cpf_cnpj');
-            $rg_ie = $this->input->post('rg_ie');
-            $telefone = $this->input->post('telefone');
-
             $resultados['id'] = $id;
-            $resultados['cpf_cnpj'] = $this->helper_model->mascaraCpfCnpj($cpf_cnpj);
-            $resultados['rg_ie'] = strtoupper($this->helper_model->mascaraRgIe($rg_ie));
-            $resultados['telefone'] = $this->helper_model->mascaraTelefone($telefone);
-            $resultados['data_cadastro'] = $this->helper_model->retornaData();
-            
-            $msg = $this->cliente_model->update($resultados);
-        }
+            $dados = $this->helper_model->validaFormulario($resultados);
+            $dados_clientes = $dados['dados_clientes'];
+            $cliente = $dados['cliente'];
 
-        $cliente = $this->cliente_model->select($id);
-        $cliente['cpf_cnpj'] = $this->helper_model->removeCaracteres($cliente['cpf_cnpj']);
-        $cliente['rg_ie'] = $this->helper_model->removeCaracteres($cliente['rg_ie']);
-        $cliente['telefone'] = $this->helper_model->removeCaracteres($cliente['telefone']);
+            if(isset($dados_clientes)) {
+                if(count($dados_clientes) > 15) {
+                    $msg = $this->cliente_model->update($dados_clientes);
+                    $_SESSION['msg_cadastro'] = "Cliente Alterado com sucesso !";
+                } 
+            }
+
+        }
 
         $data = [
             'titulo' => 'Alteração de Cadastro',

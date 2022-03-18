@@ -16,6 +16,11 @@
                 echo $_SESSION['msg'];
                 unset($_SESSION['msg']);
             }
+
+            if(isset($_SESSION['msg_cadastro'])) {
+                echo $_SESSION['msg_cadastro'];
+                unset($_SESSION['msg_cadastro']);
+            }
         ?>
     </p>
     <hr>
@@ -52,6 +57,7 @@
         <p><strong> Observações: </strong> <?php echo $cliente['observacoes'];?></p>
         <p><strong> CEP: </strong> <?php echo $cliente['cep'];?></p>
         <p><strong> Logradouro: </strong> <?php echo $cliente['logradouro'];?></p>
+        <p><strong> Número: </strong> <?php echo $cliente['numero'];?></p>
         <p><strong> Complemento: </strong> <?php echo $cliente['complemento'];?></p>
         <p><strong> Bairro: </strong> <?php echo $cliente['bairro'];?></p>
         <p><strong> Estado: </strong> <?php echo $cliente['uf'];?></p>
