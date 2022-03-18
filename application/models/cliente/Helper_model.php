@@ -106,7 +106,7 @@ class Helper_model extends CI_Model {
             $rg_ie = $data['rg_ie'];
             if(empty($rg_ie)){
                 $_SESSION['msg_rg_ie'] = "O RG/IE não pode ser Vazio!";
-            } elseif(strlen($rg_ie) != 9 && strlen($rg_ie) != 12) {
+            } elseif(strlen($rg_ie) != 6 && strlen($rg_ie) != 9 && strlen($rg_ie) != 12) {
                 $_SESSION['msg_rg_ie'] = "Informe um RG/IE válido!";
                 $cliente['rg_ie'] = $rg_ie;
             } else {
@@ -227,6 +227,7 @@ class Helper_model extends CI_Model {
             $dados_clientes['sexo'] = $data['sexo'];
             $dados_clientes['observacoes'] = $data['observacoes'];
             $dados_clientes['complemento'] = $data['complemento'];
+
             if(isset($data['id'])) {
                 $dados_clientes['id'] = $data['id'];
             }

@@ -41,7 +41,7 @@
     <hr>
     <form action="#" method="POST">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" maxlength="200"  
+        <input type="text" id="nome" name="nome" maxlength="200" required 
         value="<?php echo $nome = (isset($clientes['nome']) ? $clientes['nome'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_nome'])) {
@@ -69,7 +69,7 @@
             <label for="pessoa_juridica">Pessoa Juridica</label>
         </div>
         <label for="cpf_cnpj">CPF/CNPJ: </label>
-        <input type="text" id="cpf_cnpj" name="cpf_cnpj" maxlength="14" minlength="11"  
+        <input type="text" id="cpf_cnpj" name="cpf_cnpj" maxlength="14" minlength="11"  required
         value="<?php echo $cpf_cnpj = (isset($clientes['cpf_cnpj']) ? $clientes['cpf_cnpj'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_cpf_cnpj'])) {
@@ -78,7 +78,7 @@
             }    
         ?>
         <label for="rg_ie">RG/IE: </label>
-        <input type="text" id="rg_ie" name="rg_ie" maxlength="12" minlength="9" 
+        <input type="text" id="rg_ie" name="rg_ie" maxlength="12" minlength="9" required
         value="<?php echo $rg_ie = (isset($clientes['rg_ie']) ? $clientes['rg_ie'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_rg_ie'])) {
@@ -106,7 +106,7 @@
             <label for="sexo_masculino">Masculino</label>
         </div>
         <label for="telefone">Telefone: </label>
-        <input type="tel" id="telefone" name="telefone" maxlength="11" minlength="10" 
+        <input type="tel" id="telefone" name="telefone" maxlength="11" minlength="10" required
         value="<?php echo $telefone = (isset($clientes['telefone']) ? $clientes['telefone'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_telefone'])) {
@@ -115,7 +115,7 @@
             }    
         ?>
         <label for="email">Email: </label>
-        <input type="email" id="email" name="email"  
+        <input type="email" id="email" name="email" required
         value="<?php echo $email = (isset($clientes['email']) ? $clientes['email'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_email'])) {
@@ -128,7 +128,7 @@
             if(isset($clientes['observacoes'])) { echo trim($clientes['observacoes']); } 
         ?> </textarea>
         <label for="cep">CEP: </label>
-        <input type="text" id="cep" name="cep" maxlength="8"  onblur="pesquisarCep(this.value);"
+        <input type="text" id="cep" name="cep" maxlength="8"  onblur="pesquisarCep(this.value);" required
         value="<?php echo $cep = (isset($clientes['cep']) ? $clientes['cep'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_cep'])) {
@@ -137,7 +137,7 @@
             }    
         ?>
         <label for="logradouro">Endereço: </label>
-        <input type="text" id="logradouro" name="logradouro" maxlength="200" 
+        <input type="text" id="logradouro" name="logradouro" maxlength="200" required
         value="<?php echo $logradouro = (isset($clientes['logradouro']) ? $clientes['logradouro'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_logradouro'])) {
@@ -146,7 +146,7 @@
             }    
         ?>
         <label for="numero">Número: </label>
-        <input type="text" id="numero" name="numero" maxlength="10" 
+        <input type="text" id="numero" name="numero" maxlength="10" required
         value="<?php echo $numero = (isset($clientes['numero']) ? $clientes['numero'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_numero'])) {
@@ -158,7 +158,7 @@
         <input type="text" id="complemento" name="complemento"
         value="<?php echo $complemento = (isset($clientes['complemento']) ? $clientes['complemento'] : "") ;?>">
         <label for="bairro">Bairro: </label>
-        <input type="text" id="bairro" name="bairro" 
+        <input type="text" id="bairro" name="bairro" required
         value="<?php echo $bairro = (isset($clientes['bairro']) ? $clientes['bairro'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_bairro'])) {
@@ -167,7 +167,7 @@
             }    
         ?>
         <label for="uf">Estado: </label>
-        <input type="text" id="uf" name="uf" 
+        <input type="text" id="uf" name="uf" required
         value="<?php echo $uf = (isset($clientes['uf']) ? $clientes['uf'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_uf'])) {
@@ -176,7 +176,7 @@
             }    
         ?>
         <label for="ibge">IBGE: </label>
-        <input type="number" id="ibge" name="ibge"  
+        <input type="number" id="ibge" name="ibge" required
         value="<?php echo $ibge = (isset($clientes['ibge']) ? $clientes['ibge'] : "") ;?>">
         <?php 
             if(isset($_SESSION['msg_ibge'])) {

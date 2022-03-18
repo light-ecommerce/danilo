@@ -26,7 +26,7 @@ class Cliente extends CI_Controller
     public function cadastrar()
     {
         $msg = "";
-        $dados = FALSE;
+        $dados['cliente'] = FALSE;
 
         if ($this->input->post('btn_submit')) {
             $resultados = $this->input->post(array(
