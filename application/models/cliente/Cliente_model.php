@@ -20,27 +20,27 @@ class Cliente_model extends CI_Model {
     public function insert($dados = FALSE) {
         if( $dados !== FALSE) {
             if($this->db->insert('clientes', $dados)) {
-                return "Cliente cadastrado com sucesso";
+                return "Cliente cadastrado com sucesso !";
             } else {
-                return "Erro ao cadastrar o cliente";
+                return "Erro ao cadastrar o cliente !";
             }
         }
     }
 
     public function delete($id) {
         if($this->db->delete('clientes', array('clientes', 'id' => $id))) {
-            return "Cliente excluído com sucesso";
+            return "Cliente excluído com sucesso !";
         } else {
-            return "Erro ao Excluir o cliente";
+            return "Erro ao Excluir o cliente !";
         }
     }
 
     public function update($data) {
         $this->db->where('id', $data['id']);
         if($this->db->update('clientes', $data)) {
-            return "Cadastro alterado com sucesso";
+            return "Cadastro alterado com sucesso !";
         } else {
-            return "Falha ao alterar o cadastro";
+            return "Falha ao alterar o cadastro !";
         }
     }
 }
