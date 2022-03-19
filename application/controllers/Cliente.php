@@ -107,7 +107,6 @@ class Cliente extends CI_Controller
             if(isset($dados_clientes)) {
                 if(count($dados_clientes) > 15) {
                     $msg = $this->cliente_model->update($dados_clientes);
-                    $_SESSION['msg_cadastro'] = "Cliente Alterado com sucesso !";
                 } 
             }
 

@@ -100,7 +100,8 @@
                                  "cep rua rua rua"
                                  "numero comple comple comple"
                                  "bairro bairro uf ibge"
-                                 "btn_a btn_e . .";
+                                 "btn btn . .";
+                                 /* "btn_a btn_e . ."; */
                                 
             margin-bottom: 40px;
         }
@@ -169,14 +170,9 @@
             grid-area: ibge;
         }
 
-        #clientes a.btn_alterar {
-            grid-area: btn_a;
+        #clientes div#botoes {
+            grid-area: btn;
         }
-
-        #clientes a.btn_excluir {
-            grid-area: btn_e;
-        }
-
 
         /* FIM GRID LAYOUT */
 
@@ -267,10 +263,12 @@
                 <p><strong> Bairro: </strong> <?php echo $cliente['bairro']; ?></p>
                 <p><strong> Estado: </strong> <?php echo $cliente['uf']; ?></p>
                 <p><strong> IBGE: </strong> <?php echo $cliente['ibge']; ?></p>
-                <a class="btn_alterar" href="<?php echo base_url('cliente/alterar/' . $cliente['id']); ?>">Alterar</a>
-                <a class="btn_excluir" onclick="javascript: 
-                    if (confirm('Você realmente deseja excluir este cliente?'))
-                    location.href='<?php echo base_url('cliente/excluir/' . $cliente['id']); ?>'">Excluir</a>
+                <div id="botoes">
+                    <a class="btn_alterar" href="<?php echo base_url('cliente/alterar/' . $cliente['id']); ?>">Alterar</a>
+                    <a class="btn_excluir" onclick="javascript: 
+                        if (confirm('Você realmente deseja excluir este cliente?'))
+                        location.href='<?php echo base_url('cliente/excluir/' . $cliente['id']); ?>'">Excluir</a>
+                </div>
             </section>
         <?php endforeach; ?>
 

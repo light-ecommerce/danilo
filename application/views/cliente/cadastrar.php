@@ -88,24 +88,116 @@
         form {
             display: flex;
             flex-direction: column;
-            width: 80%;
+            width: 100%;
         }
 
-        form input,
+        .grupo_form {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .grupo_form_item {
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .input {
+            display: block;
+            margin: 0px 0px 15px;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        #nome {
+            flex: 1 1;
+        }
+
+        #radios {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 15px;
+        }
+
+        #radios div:nth-child(1) {
+            margin-right: 20px;
+        }
+
+        #radios div {
+            flex: 1 1;
+        }
+
+        #pessoa_juridica {
+            margin-left: 10px;
+        }
+
+        #sexo_masculino {
+            margin-left: 10px;
+        }
+
+        #cpf_cnpj,
+        #rg_ie {
+            flex: 1 1;
+        }
+
+        #cpf_cnpj {
+            margin-right: 10px;
+        }
+
+        #telefone {
+            margin-right: 10px;
+            flex: 1 1;
+        }
+
+        #email {
+            flex: 10 1;
+        }
+
         textarea {
-            width: 300px;
-            margin-bottom: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
         }
 
-        label {
-            margin-bottom: 5px;
-            width: 100px;
+        #cep {
+            margin-right: 10px;
+            flex: 1 1;
         }
 
-        form input[type=radio] {
-            width: 10px;
-            display: inline-block;
+        #logradouro {
+            flex: 10 1;
         }
+
+        #numero {
+            margin-right: 10px;
+            flex: 1 1;
+        }
+
+        #complemento {
+            flex: 10 1;
+        }
+
+        #bairro {
+            margin-right: 10px;
+            flex: 10 1;
+        }
+
+        #uf {
+            margin-right: 10px;
+            flex: 1 1;
+        }
+
+        #ibge {
+            flex: 1 1;
+        }
+
+        #btn_submit {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            flex: 0.3 1;
+        }
+
     </style>
 
 </head>
@@ -126,152 +218,161 @@
         </section>
         <section id="section_secundaria">
             <form action="#" method="POST">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" maxlength="200" required 
-                value="<?php echo $nome = (isset($clientes['nome']) ? $clientes['nome'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_nome'])) {
-                        echo '<p>' . $_SESSION['msg_nome'] . '</p>' ;
-                        unset($_SESSION['msg_nome']);
-                    }    
-                ?>
-                <div>
-                    <p>Tipo de Pessoa: </p>
-                    <input type="radio" id="pessoa_fisica" name="tipo_pessoa" value="0" 
-                    <?php  
-                        if(isset($clientes['tipo_pessoa'])) {
-                            echo $checked = ($clientes['tipo_pessoa'] == 0) ? 'checked' : "";
-                        } else {
-                            echo 'checked';
-                        }
-                    ?>>
-                    <label for="pessoa_fisica">Pessoa Física</label>
-                    <input type="radio" id="pessoa_juridica" name="tipo_pessoa" value="1"
-                    <?php  
-                        if(isset($clientes['tipo_pessoa'])) {
-                            echo $checked = ($clientes['tipo_pessoa'] == 1) ? 'checked' : "";
-                        } 
-                    ?>>
-                    <label for="pessoa_juridica">Pessoa Juridica</label>
+
+                <div class="grupo_form">
+                    <input type="text" class="input" id="nome" name="nome" maxlength="200" placeholder="Nome Completo" required 
+                    value="<?php echo $nome = (isset($clientes['nome']) ? $clientes['nome'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_nome'])) {
+                            echo '<p>' . $_SESSION['msg_nome'] . '</p>' ;
+                            unset($_SESSION['msg_nome']);
+                        }    
+                    ?>
                 </div>
-                <label for="cpf_cnpj">CPF/CNPJ: </label>
-                <input type="text" id="cpf_cnpj" name="cpf_cnpj" maxlength="14" minlength="11"  required
-                value="<?php echo $cpf_cnpj = (isset($clientes['cpf_cnpj']) ? $clientes['cpf_cnpj'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_cpf_cnpj'])) {
-                        echo '<p>' . $_SESSION['msg_cpf_cnpj'] . '</p>' ;
-                        unset($_SESSION['msg_cpf_cnpj']);
-                    }    
-                ?>
-                <label for="rg_ie">RG/IE: </label>
-                <input type="text" id="rg_ie" name="rg_ie" maxlength="12" minlength="9" required
-                value="<?php echo $rg_ie = (isset($clientes['rg_ie']) ? $clientes['rg_ie'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_rg_ie'])) {
-                        echo '<p>' . $_SESSION['msg_rg_ie'] . '</p>' ;
-                        unset($_SESSION['msg_rg_ie']);
-                    }    
-                ?>
-                <div>
-                    <p>Sexo: </p>
-                    <input type="radio" id="sexo_feminino" name="sexo" value="0" 
-                    <?php  
-                        if(isset($clientes['sexo'])) {
-                            echo $checked = ($clientes['sexo'] == 0) ? 'checked' : "";
-                        } else {
-                            echo 'checked';
-                        }
-                    ?>>
-                    <label for="sexo_feminino">Feminino</label>
-                    <input type="radio" id="sexo_masculino" name="sexo" value="1"
-                    <?php  
-                        if(isset($clientes['sexo'])) {
-                            echo $checked = ($clientes['sexo'] == 1) ? 'checked' : "";
-                        }
-                    ?>>
-                    <label for="sexo_masculino">Masculino</label>
+
+                <div id="radios">
+                    <div>
+                        <p>Tipo de Pessoa: </p>
+                        <input type="radio" id="pessoa_fisica" name="tipo_pessoa" value="0" 
+                        <?php  
+                            if(isset($clientes['tipo_pessoa'])) {
+                                echo $checked = ($clientes['tipo_pessoa'] == 0) ? 'checked' : "";
+                            } else {
+                                echo 'checked';
+                            }
+                        ?>>
+                        <label for="pessoa_fisica">Pessoa Física</label>
+                        <input type="radio" id="pessoa_juridica" name="tipo_pessoa" value="1"
+                        <?php  
+                            if(isset($clientes['tipo_pessoa'])) {
+                                echo $checked = ($clientes['tipo_pessoa'] == 1) ? 'checked' : "";
+                            } 
+                        ?>>
+                        <label for="pessoa_juridica">Pessoa Juridica</label>
+                    </div>
+                    <div>
+                        <p>Sexo: </p>
+                        <input type="radio" id="sexo_feminino" name="sexo" value="0" 
+                        <?php  
+                            if(isset($clientes['sexo'])) {
+                                echo $checked = ($clientes['sexo'] == 0) ? 'checked' : "";
+                            } else {
+                                echo 'checked';
+                            }
+                        ?>>
+                        <label for="sexo_feminino">Feminino</label>
+                        <input type="radio" id="sexo_masculino" name="sexo" value="1"
+                        <?php  
+                            if(isset($clientes['sexo'])) {
+                                echo $checked = ($clientes['sexo'] == 1) ? 'checked' : "";
+                            }
+                        ?>>
+                        <label for="sexo_masculino">Masculino</label>
+                    </div>
                 </div>
-                <label for="telefone">Telefone: </label>
-                <input type="tel" id="telefone" name="telefone" maxlength="11" minlength="10" required
-                value="<?php echo $telefone = (isset($clientes['telefone']) ? $clientes['telefone'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_telefone'])) {
-                        echo '<p>' . $_SESSION['msg_telefone'] . '</p>' ;
-                        unset($_SESSION['msg_telefone']);
-                    }    
-                ?>
-                <label for="email">Email: </label>
-                <input type="email" id="email" name="email" required
-                value="<?php echo $email = (isset($clientes['email']) ? $clientes['email'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_email'])) {
-                        echo '<p>' . $_SESSION['msg_email'] . '</p>' ;
-                        unset($_SESSION['msg_email']);
-                    }    
-                ?>
-                <label for="observacoes">Observações: </label>
-                <textarea id="observacoes" name="observacoes" cols="30" rows="5"><?php 
+
+                <div class="grupo_form">
+                    <input type="text" class="input" id="cpf_cnpj" name="cpf_cnpj" maxlength="14" minlength="11" placeholder="CPF/CNPJ" required
+                    value="<?php echo $cpf_cnpj = (isset($clientes['cpf_cnpj']) ? $clientes['cpf_cnpj'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_cpf_cnpj'])) {
+                            echo '<p>' . $_SESSION['msg_cpf_cnpj'] . '</p>' ;
+                            unset($_SESSION['msg_cpf_cnpj']);
+                        }    
+                    ?>
+                    <input type="text" class="input" id="rg_ie" name="rg_ie" maxlength="12" minlength="9" placeholder="RG/IE" required
+                    value="<?php echo $rg_ie = (isset($clientes['rg_ie']) ? $clientes['rg_ie'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_rg_ie'])) {
+                            echo '<p>' . $_SESSION['msg_rg_ie'] . '</p>' ;
+                            unset($_SESSION['msg_rg_ie']);
+                        }    
+                    ?>
+                </div>
+
+                <div class="grupo_form">
+                    <input type="tel" class="input" id="telefone" name="telefone" maxlength="11" minlength="10" placeholder="Telefone" required
+                    value="<?php echo $telefone = (isset($clientes['telefone']) ? $clientes['telefone'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_telefone'])) {
+                            echo '<p>' . $_SESSION['msg_telefone'] . '</p>' ;
+                            unset($_SESSION['msg_telefone']);
+                        }    
+                    ?>
+                    <input type="email" class="input" id="email" name="email" placeholder="E-mail" required
+                    value="<?php echo $email = (isset($clientes['email']) ? $clientes['email'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_email'])) {
+                            echo '<p>' . $_SESSION['msg_email'] . '</p>' ;
+                            unset($_SESSION['msg_email']);
+                        }    
+                    ?>
+                </div>
+                <textarea id="observacoes" name="observacoes" cols="30" rows="5" placeholder="Observações"><?php 
                     if(isset($clientes['observacoes'])) { echo trim($clientes['observacoes']); } 
-                ?> </textarea>
-                <label for="cep">CEP: </label>
-                <input type="text" id="cep" name="cep" maxlength="8"  onblur="pesquisarCep(this.value);" required
-                value="<?php echo $cep = (isset($clientes['cep']) ? $clientes['cep'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_cep'])) {
-                        echo '<p>' . $_SESSION['msg_cep'] . '</p>' ;
-                        unset($_SESSION['msg_cep']);
-                    }    
-                ?>
-                <label for="logradouro">Endereço: </label>
-                <input type="text" id="logradouro" name="logradouro" maxlength="200" required
-                value="<?php echo $logradouro = (isset($clientes['logradouro']) ? $clientes['logradouro'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_logradouro'])) {
-                        echo '<p>' . $_SESSION['msg_logradouro'] . '</p>' ;
-                        unset($_SESSION['msg_logradouro']);
-                    }    
-                ?>
-                <label for="numero">Número: </label>
-                <input type="text" id="numero" name="numero" maxlength="10" required
-                value="<?php echo $numero = (isset($clientes['numero']) ? $clientes['numero'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_numero'])) {
-                        echo '<p>' . $_SESSION['msg_numero'] . '</p>' ;
-                        unset($_SESSION['msg_numero']);
-                    }    
-                ?>
-                <label for="complemento">Complemento: </label>
-                <input type="text" id="complemento" name="complemento"
-                value="<?php echo $complemento = (isset($clientes['complemento']) ? $clientes['complemento'] : "") ;?>">
-                <label for="bairro">Bairro: </label>
-                <input type="text" id="bairro" name="bairro" required
-                value="<?php echo $bairro = (isset($clientes['bairro']) ? $clientes['bairro'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_bairro'])) {
-                        echo '<p>' . $_SESSION['msg_bairro'] . '</p>' ;
-                        unset($_SESSION['msg_bairro']);
-                    }    
-                ?>
-                <label for="uf">Estado: </label>
-                <input type="text" id="uf" name="uf" required
-                value="<?php echo $uf = (isset($clientes['uf']) ? $clientes['uf'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_uf'])) {
-                        echo '<p>' . $_SESSION['msg_uf'] . '</p>' ;
-                        unset($_SESSION['msg_uf']);
-                    }    
-                ?>
-                <label for="ibge">IBGE: </label>
-                <input type="number" id="ibge" name="ibge" required
-                value="<?php echo $ibge = (isset($clientes['ibge']) ? $clientes['ibge'] : "") ;?>">
-                <?php 
-                    if(isset($_SESSION['msg_ibge'])) {
-                        echo '<p>' . $_SESSION['msg_ibge'] . '</p>' ;
-                        unset($_SESSION['msg_ibge']);
-                    }    
-                ?>
-                
-                <input type="submit" id="btn_submit" name="btn_submit" value="<?php echo $botao ?>">
+                ?></textarea>
+
+                <div class="grupo_form">
+                    <input type="text" class="input" id="cep" name="cep" maxlength="8"  onblur="pesquisarCep(this.value);" placeholder="CEP" required
+                    value="<?php echo $cep = (isset($clientes['cep']) ? $clientes['cep'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_cep'])) {
+                            echo '<p>' . $_SESSION['msg_cep'] . '</p>' ;
+                            unset($_SESSION['msg_cep']);
+                        }    
+                    ?>
+                    <input type="text" class="input" id="logradouro" name="logradouro" maxlength="200" placeholder="Endereço" required
+                    value="<?php echo $logradouro = (isset($clientes['logradouro']) ? $clientes['logradouro'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_logradouro'])) {
+                            echo '<p>' . $_SESSION['msg_logradouro'] . '</p>' ;
+                            unset($_SESSION['msg_logradouro']);
+                        }    
+                    ?>
+                </div>
+
+                <div class="grupo_form">
+                    <input type="text" class="input" id="numero" name="numero" maxlength="10" placeholder="Número" required
+                    value="<?php echo $numero = (isset($clientes['numero']) ? $clientes['numero'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_numero'])) {
+                            echo '<p>' . $_SESSION['msg_numero'] . '</p>' ;
+                            unset($_SESSION['msg_numero']);
+                        }    
+                    ?>
+                    <input type="text" class="input" id="complemento" name="complemento" placeholder="Complemento"
+                    value="<?php echo $complemento = (isset($clientes['complemento']) ? $clientes['complemento'] : "") ;?>">
+                </div>
+
+                <div class="grupo_form">
+                    <input type="text" class="input" id="bairro" name="bairro" placeholder="Bairro" required
+                    value="<?php echo $bairro = (isset($clientes['bairro']) ? $clientes['bairro'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_bairro'])) {
+                            echo '<p>' . $_SESSION['msg_bairro'] . '</p>' ;
+                            unset($_SESSION['msg_bairro']);
+                        }    
+                    ?>
+                    <input type="text" class="input" id="uf" name="uf" placeholder="Estado" required
+                    value="<?php echo $uf = (isset($clientes['uf']) ? $clientes['uf'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_uf'])) {
+                            echo '<p>' . $_SESSION['msg_uf'] . '</p>' ;
+                            unset($_SESSION['msg_uf']);
+                        }    
+                    ?>
+                    <input type="number" class="input" id="ibge" name="ibge" placeholder="IBGE" required
+                    value="<?php echo $ibge = (isset($clientes['ibge']) ? $clientes['ibge'] : "") ;?>">
+                    <?php 
+                        if(isset($_SESSION['msg_ibge'])) {
+                            echo '<p>' . $_SESSION['msg_ibge'] . '</p>' ;
+                            unset($_SESSION['msg_ibge']);
+                        }    
+                    ?>
+                </div>
+                <div class="grupo_form">
+                    <input type="submit" id="btn_submit" name="btn_submit" value="<?php echo $botao ?>">
+                </div>
             </form>
         </section>
     </main>
