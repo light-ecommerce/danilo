@@ -16,6 +16,11 @@
             text-decoration: none;
         }
 
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
         header {
             background-color: #7159c1;
             width: 100%;
@@ -38,17 +43,17 @@
 
         main {
             font-family: 'Nunito Sans', sans-serif;
-            width: 80%;
-            max-width: 1160px;
-            display: block;
-            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         section {
             width: 90%;
             max-width: 980px;
             background: white;
-            padding: 40px 20px;
+            padding: 20px;
             box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.15),
                 0px 10px 20px -10px rgba(0, 0, 0, 0.1)
         }
@@ -85,8 +90,8 @@
         #clientes {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(8, 1fr);
-            gap: 0px 15px;
+            grid-template-rows: repeat(auto-fit, minmax(0px, 1fr));
+            gap: 10px 15px;
 
             grid-template-areas: "id nome nome nome"
                                  "cpfcnpj rgie data data"
@@ -98,10 +103,6 @@
                                  "btn_a btn_e . .";
                                 
             margin-bottom: 40px;
-        }
-
-        #clientes p {
-            align-self: center;
         }
 
         #clientes p:nth-child(1) {
