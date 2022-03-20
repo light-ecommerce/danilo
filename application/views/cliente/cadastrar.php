@@ -316,18 +316,22 @@
                 </div>
 
                 <div class="grupo_form">
-                    <?php 
+                    <p class="p_msg cpf_cnpj" >
+                        <?php 
                             if(isset($_SESSION['msg_cpf_cnpj'])) {
-                                echo '<p class="p_msg cpf_cnpj" >' . $_SESSION['msg_cpf_cnpj'] . '</p>' ;
+                                echo $_SESSION['msg_cpf_cnpj'];
                                 unset($_SESSION['msg_cpf_cnpj']);
                             }    
-                    ?>
-                    <?php 
+                        ?>
+                    </p>
+                    <p class="p_msg rg_ie" >
+                        <?php 
                             if(isset($_SESSION['msg_rg_ie'])) {
-                                echo '<p class="p_msg rg_ie" >' . $_SESSION['msg_rg_ie'] . '</p>' ;
+                                echo $_SESSION['msg_rg_ie'];
                                 unset($_SESSION['msg_rg_ie']);
                             }    
-                    ?>
+                        ?>
+                    </p>
                 </div>
 
                 <div class="grupo_form">
@@ -339,18 +343,22 @@
                 </div>
 
                 <div class="grupo_form">
-                    <?php 
+                    <p class="p_msg telefone" >
+                        <?php 
                             if(isset($_SESSION['msg_telefone'])) {
-                                echo '<p class="p_msg telefone" >' . $_SESSION['msg_telefone'] . '</p>' ;
+                                echo $_SESSION['msg_telefone'];
                                 unset($_SESSION['msg_telefone']);
                             }    
-                    ?>
-                    <?php 
+                        ?>
+                    </p>
+                    <p class="p_msg email" >
+                        <?php 
                             if(isset($_SESSION['msg_email'])) {
-                                echo '<p class="p_msg email" >' . $_SESSION['msg_email'] . '</p>' ;
+                                echo $_SESSION['msg_email'];
                                 unset($_SESSION['msg_email']);
                             }    
-                    ?>
+                        ?>
+                    </p>
                 </div>
 
                 <textarea id="observacoes" name="observacoes" cols="30" rows="5" placeholder="Observações"><?php 
@@ -366,18 +374,22 @@
                 </div>
                 
                 <div class="grupo_form">
-                    <?php 
-                        if(isset($_SESSION['msg_cep'])) {
-                            echo '<p class="p_msg cep" >' . $_SESSION['msg_cep'] . '</p>' ;
-                            unset($_SESSION['msg_cep']);
-                        }    
-                    ?>
-                    <?php 
-                        if(isset($_SESSION['msg_logradouro'])) {
-                            echo '<p class="p_msg logradouro" >' . $_SESSION['msg_logradouro'] . '</p>' ;
-                            unset($_SESSION['msg_logradouro']);
-                        }    
-                    ?>
+                    <p class="p_msg cep" >
+                        <?php 
+                            if(isset($_SESSION['msg_cep'])) {
+                                echo $_SESSION['msg_cep'];
+                                unset($_SESSION['msg_cep']);
+                            }    
+                        ?>
+                    </p>
+                    <p class="p_msg logradouro" >
+                        <?php 
+                            if(isset($_SESSION['msg_logradouro'])) {
+                                echo $_SESSION['msg_logradouro'];
+                                unset($_SESSION['msg_logradouro']);
+                            }    
+                        ?>
+                    </p>
                 </div>
 
                 <div class="grupo_form">
@@ -389,12 +401,14 @@
                 </div>
 
                 <div class="grupo_form">
-                    <?php 
-                        if(isset($_SESSION['msg_numero'])) {
-                            echo '<p class="p_msg">' . $_SESSION['msg_numero'] . '</p>' ;
-                            unset($_SESSION['msg_numero']);
-                        }    
-                    ?>
+                    <p class="p_msg">
+                        <?php 
+                            if(isset($_SESSION['msg_numero'])) {
+                                echo $_SESSION['msg_numero'];
+                                unset($_SESSION['msg_numero']);
+                            }    
+                        ?>
+                    </p>
                 </div>
 
                 <div class="grupo_form">
@@ -406,28 +420,33 @@
                     
                     <input type="number" class="input" id="ibge" name="ibge" placeholder="IBGE" required
                     value="<?php echo $ibge = (isset($clientes['ibge']) ? $clientes['ibge'] : "") ;?>">
-                   
                 </div>
 
                 <div class="grupo_form">
-                    <?php 
-                        if(isset($_SESSION['msg_bairro'])) {
-                            echo '<p class="p_msg bairro" >' . $_SESSION['msg_bairro'] . '</p>' ;
-                            unset($_SESSION['msg_bairro']);
-                        }    
-                    ?>
-                    <?php 
-                        if(isset($_SESSION['msg_uf'])) {
-                            echo '<p class="p_msg uf" >' . $_SESSION['msg_uf'] . '</p>' ;
-                            unset($_SESSION['msg_uf']);
-                        }    
-                    ?>
-                     <?php 
-                        if(isset($_SESSION['msg_ibge'])) {
-                            echo '<p class="p_msg ibge" >' . $_SESSION['msg_ibge'] . '</p>' ;
-                            unset($_SESSION['msg_ibge']);
-                        }    
-                    ?>
+                    <p class="p_msg bairro">
+                        <?php 
+                            if(isset($_SESSION['msg_bairro'])) {
+                                echo $_SESSION['msg_bairro'];
+                                unset($_SESSION['msg_bairro']);
+                            }    
+                        ?>
+                    </p>
+                    <p class="p_msg uf">
+                        <?php 
+                            if(isset($_SESSION['msg_uf'])) {
+                                echo $_SESSION['msg_uf'];
+                                unset($_SESSION['msg_uf']);
+                            }    
+                        ?>
+                    </p>
+                    <p class="p_msg ibge">
+                        <?php 
+                            if(isset($_SESSION['msg_ibge'])) {
+                                echo $_SESSION['msg_ibge'];
+                                unset($_SESSION['msg_ibge']);
+                            }    
+                        ?>
+                    </p>
                 </div>
 
                 <div class="grupo_form">
